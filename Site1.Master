@@ -1,0 +1,116 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="SE_Project.Site1" %>
+
+<!DOCTYPE html>
+
+<html="en">
+<head runat="server">
+    <title></title>
+    <link href="Datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="Bootstrap/Css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="fontawesome/css/all.css" rel="stylesheet" />
+    <script src="Bootstrap/Js/bootstrap.min.js"></script>
+    <script src="Bootstrap/Js/popper.min.js"></script>
+    <script src="Bootstrap/Js/jquery-3.3.1.slim.min.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+<body>
+    <style>
+        /* Add some margin to the brand text */
+        .brand-text {
+               margin-left: 20px; 
+        }
+        .brand-text1 {
+               margin-left: 250px; 
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-container {
+            position: fixed;
+            width: 100%;
+            background-color: #fff; /* Set your desired background color */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for a visual effect */
+            z-index: 1000; /* Make sure it's above other elements */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px; /* Adjust padding as needed */
+        }
+        .footer-container {
+            position: sticky;
+            width: 100%;
+            bottom:0;
+            margin-top:7px;
+            background-color: #215d8c; /* Light blue color */
+            padding: 1px; 
+            text-align: center;
+            transition: bottom 0.3s;
+        }
+
+        .footerlinks {
+            color: #fff; 
+            text-decoration: none;
+        }
+
+    </style>
+
+
+    <form id="form1" runat="server">
+        <div class="header-container">
+            <header>
+           <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">
+        <img src="images/Medical Care.png" width="120" height="50" class="brand-text"/>
+        <span class="brand-text">Hospital Management</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <span class="brand-text1"></span>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link"  href="Home.aspx"> <h6>Home</h6> <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link"  href="AboutUs.aspx"> <h6>About Us</h6> <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link"  href="ContactUs.aspx"> <h6>Contact Us</h6> <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+                </header>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+            </div>
+        <footer>
+            <div class="footer-container">
+                <p>&copy; All rights reserved. <a class="footerlinks" href="Home.aspx" target="_blank">Health Care Hospital</a></p>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
