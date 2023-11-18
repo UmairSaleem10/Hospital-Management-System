@@ -11,7 +11,7 @@ namespace SE_Project
 {
 
 
-    public partial class Appointment
+    public partial class SignUp
     {
 
         /// <summary>
@@ -33,13 +33,13 @@ namespace SE_Project
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
 
         /// <summary>
-        /// ddlGender control.
+        /// TextBox3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGender;
+        protected global::System.Web.UI.WebControls.TextBox TextBox3;
 
         /// <summary>
         /// TextBox4 control.
@@ -58,6 +58,15 @@ namespace SE_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox5;
+
+        /// <summary>
+        /// TextBox6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox6;
 
         /// <summary>
         /// Button1 control.

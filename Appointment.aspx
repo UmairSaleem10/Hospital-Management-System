@@ -26,9 +26,9 @@
                     display: inline-block;
                     padding: 5px 25px;
                     background-color: #215d8c; /* Button background color */
-                    color: #fff; 
+                    color: #fff;
                     border: none;
-                    border-radius: 20px; 
+                    border-radius: 20px;
                     text-decoration: none;
                     text-align: center;
                     font-size: 20px;
@@ -59,7 +59,7 @@
                     color: #000000;
                 }
                 .input-line {
-                    border: none;
+                    border: solid;
                     border-bottom: 1px solid #000;
                     width: 100%;
                     margin-bottom: 20px;
@@ -89,24 +89,19 @@
           </div>
                 </div>
                 <img src="images/doct.jpg" style="float:left; 
-            margin-right:10px; width: 500px; height: 400px; bottom:200px; margin-left: 36px; text-align:center; margin-top: -380px"></h1>
+            margin-right:10px; width: 500px; height: 400px; bottom:230px; margin-left: 36px; text-align:center; margin-top: -360px"></h1>
 
                 <div class="app-container">
                     <formview>
-                        <div class="input-dec">
-                     <input type="text" id="DoctorId" name="DoctorId" class="input-line" placeholder="Doctor Id" required>
-                            </div>
-                        <div class="input-dec">
-                    <input type="text" id="PatientId" name="PatientId" class="input-line" placeholder="PatientId" required>
-                            </div>
-                        <div class="input-dec">
-                    <input type="text" id="Time" name="Time" class="input-line" placeholder="Time" required>
-                            </div>
-                        <div class="input-dec">
-                    <input type="text" id="Disease" name="Disease" class="input-line" placeholder="Disease" required>
-                            </div>
-                    <button class="curved-button1" type="submit">Contact Us</button>
-                    </formview>
+                    <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="Name"></asp:TextBox>
+                    <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Dr_Name" ></asp:TextBox>
+                    <label for="ddlGender">Dr_Name:</label>
+                        <asp:DropDownList ID="ddlGender" runat="server" CssClass="input-line">
+                        </asp:DropDownList>
+                        <asp:TextBox CssClass="input-line" ID="TextBox4" runat="server" placeholder="Gender"></asp:TextBox>
+                        <asp:TextBox CssClass="input-line" ID="TextBox5" runat="server" placeholder="Time" TextMode="DateTime"></asp:TextBox>
+                    <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" CssClass="curved-button1" />
+                </formview>
                 </div>
                 </div>
         </body>

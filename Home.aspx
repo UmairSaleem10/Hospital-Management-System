@@ -15,6 +15,11 @@
                     align-items: center;
                     text-align: center;
                     text-decoration-color: #215d8c;
+                    background-color:#fff;
+                    margin-top: 80px;
+                    margin-bottom: 70px;
+                    width:150%;
+                    height: 480px;
                 }
                 .image-container {
                     margin-bottom: 20px; /* Adjust the margin as needed to create space between image and text */
@@ -47,6 +52,49 @@
                     padding: 20px; /* Adjust the padding as needed */
                 }
 
+                .department-container {
+                    display: flex;
+                    justify-content: space-around;
+                    flex-wrap: wrap;
+                }
+
+                .department-box {
+                    width: 300px;
+                    margin: 20px;
+                    text-align: center;
+                    background-color: #fff; /* Adjust background color as needed */
+                    padding: 20px;
+                    border-radius: 20px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+
+                .department-box img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                }
+
+                .department-box h3 {
+                    color: #215d8c; /* Adjust text color as needed */
+                }
+
+                .department-box p {
+                    color: #333; /* Adjust text color as needed */
+                }
+
+                .department-box .curved-button {
+                    display: inline-block;
+                    padding: 5px 15px;
+                    background-color: #215d8c;
+                    color: #fff;
+                    border: none;
+                    border-radius: 20px;
+                    text-decoration: none;
+                    font-size: 14px;
+                }
+
+
             </style>
 
             <div class="background-theme">
@@ -70,6 +118,122 @@
           <h1 style="width: 1121px">&nbsp;</h1>
          <h1 style="width: 1121px">&nbsp;</h1>
           </div>
+                </div>
+
+                <div class="department-container">
+    <div class="department-box">
+        <h3>Cardiology Department</h3>
+        <p>Explore our cardiology services and meet our expert cardiologists.</p>
+        <a class="curved-button" href="CardiologyDepartment.aspx">Learn More</a>
+    </div>
+
+    <div class="department-box">
+        <h3>Eye care Department</h3>
+        <p>Discover our eye care services and meet our skilled ophthalmologists.</p>
+        <a class="curved-button" href="EyeDepartment.aspx">Learn More</a>
+    </div>
+
+    <div class="department-box">
+        <h3>Neurology Department</h3>
+        <p>Learn about our neurology services and meet our experienced neurologists.</p>
+        <a class="curved-button" href="NeurologyDepartment.aspx">Learn More</a>
+    </div>
+
+                    <div class="department-box">
+        <h3>Surgery Department</h3>
+        <p>Explore our advanced brain care services and meet our dedicated neurosurgeons.</p>
+        <a class="curved-button" href="BrainDepartment.aspx">Learn More</a>
+    </div>
+
+                    <div class="department-box">
+        <h3>Physiotherapy Department</h3>
+        <p>Explore our advanced brain care services and meet our dedicated neurosurgeons.</p>
+        <a class="curved-button" href="BrainDepartment.aspx">Learn More</a>
+    </div>
+                    <div class="department-box">
+        <h3>Radiology Department</h3>
+        <p>Explore our advanced brain care services and meet our dedicated neurosurgeons.</p>
+        <a class="curved-button" href="BrainDepartment.aspx">Learn More</a>
+    </div>
+</div>
+                
+                <style>
+                    .about-us-container1 {
+                    /*margin-bottom:50px;*/
+                    max-width: 1200px; /* Adjust the width as needed */
+                    margin: 0 auto;
+                    padding: 50px; /* Adjust the padding as needed */
+                    background-color: #ddd; /* Background color */
+                    border: 1px solid #ddd; /* Border style */
+                }
+
+                    .about-us-container1 h2 {
+                        text-align: center;
+                        color: #215d8c; /* Heading text color */
+                    }
+
+                    .about-us-container1 p {
+                        /*margin-top:20px;*/
+                        line-height: 1.5; /* Adjust line height as needed */
+                        text-align: left;
+                        color: #385977; /* Paragraph text color */
+                        /*margin-top: 60px;*/
+                    }
+
+                    .input-line {
+                        border: none;
+                        border-bottom: 1px solid #000;
+                        width: 100%;
+                        margin-bottom: 20px;
+                        padding: 5px;
+                        color:#000000;
+                        Background-color:#00000000
+                    }
+
+                    .input-line:focus {
+                        outline:auto;
+                    }
+
+                    .contact-us-container {
+                        max-width: 500px; /* Adjust the width as needed */
+                        margin: 50%;
+                        margin-top:60px;
+                        width:50%;
+                        padding: 50px; /* Adjust the padding as needed */
+                        background-color: #ffffff; /* Background color */
+                        border: 1px solid #ddd;
+                        margin-bottom:20px;/* Border style */
+                        border:none;
+                        color:#000000;
+                        margin: auto;
+                    }
+                    .image-container {
+                        margin-bottom: 20px; /* Adjust the margin as needed to create space between image and text */
+                    }
+                    .curved-button1 {
+                        display: inline-block;
+                        padding: 5px 25px;
+                        background-color: #215d8c; /* Button background color */
+                        color: #fff;
+                        border: none;
+                        border-radius: 20px;
+                        text-decoration: none;
+                        text-align: center;
+                        font-size: 20px;
+                    }
+                </style>
+
+                <div class="about-us-container1">
+                    <h2>Quick Entry</h2>
+                    <div class="contact-us-container">
+                <formview>
+                    <input type="text" id="fullName1" name="fullName" class="input-line" placeholder="Full Name" required>
+                    <input type="text" id="Email1" name="Email" class="input-line" placeholder="Email" required>
+                    <input type="text" id="PhoneNumber1" name="PhoneNumber" class="input-line" placeholder="Phone Number" required>
+                    <input type="text" id="Message1" name="Message" class="input-line" placeholder="Message" required>
+                    <button class="curved-button1" type="submit">Contact Us</button>
+                </formview>
+                        </div>
                 </div>
                 </div>
         </body>

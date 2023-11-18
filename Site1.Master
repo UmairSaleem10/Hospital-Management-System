@@ -62,7 +62,31 @@
             color: #fff; 
             text-decoration: none;
         }
+          .department-menu {
+        background-color: #fff; /* Set the background color of the container */
+        padding: 10px; /* Add padding to the container */
+        border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+        color: #000; /* Set the text color to black */
+    }
 
+    .department-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: none;
+    }
+
+    .department-menu li {
+        margin-right: 15px;
+        display: inline-block;
+    }
+
+    .department-menu a {
+        color: #000; /* Set the text color to black */
+        text-decoration: none; /* Remove underlines from links */
+        font-weight: bold; /* Make the text bold */
+        font-size: 16px; /* Set the font size */
+    }
     </style>
 
 
@@ -81,21 +105,52 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
         <span class="brand-text1"></span>
+        
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
                 <a class="nav-link"  href="Home.aspx"> <h6>Home</h6> <span class="sr-only">(current)</span></a>
             </li>
         </ul>
+
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
                 <a class="nav-link"  href="AboutUs.aspx"> <h6>About Us</h6> <span class="sr-only">(current)</span></a>
             </li>
         </ul>
+
+        <ul class="navbar-nav ml-auto">
+    <li class="nav-item active">
+        <asp:Menu ID="menuDepartments" runat="server" CssClass="nav-link" Orientation="Horizontal" StaticSubMenuIndent="10px">
+            <Items>
+                <asp:MenuItem Text="Departments">
+                    <asp:MenuItem Text="Cardiology" NavigateUrl="~/CardiologyDepartment.aspx" />
+                    <asp:MenuItem Text="Ophthalmology" NavigateUrl="~/EyeDepartment.aspx" />
+                    <asp:MenuItem Text="Neurology" NavigateUrl="~/NeurologyDepartment.aspx" />
+                    <asp:MenuItem Text="Neurosurgery" NavigateUrl="~/BrainDepartment.aspx" />
+                </asp:MenuItem>
+            </Items>
+        </asp:Menu>
+    </li>
+</ul>
+
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
                 <a class="nav-link"  href="ContactUs.aspx"> <h6>Contact Us</h6> <span class="sr-only">(current)</span></a>
             </li>
         </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link"  href="SignUp.aspx"> <h6>SignUp</h6> <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link"  href="SignIn.aspx"> <h6>SignIn</h6> <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+
     </div>
 </nav>
 
