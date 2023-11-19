@@ -136,11 +136,11 @@
             margin-right:10px; width: 480px; height: 320px; bottom:200px; margin-left: 40px; text-align:center">
                         <div class="contact-us-container">
                 <formview>
-                    <input type="text" id="fullName" name="fullName" class="input-line" placeholder="Full Name" required>
-                    <input type="text" id="Email" name="Email" class="input-line" placeholder="Email" required>
-                    <input type="text" id="PhoneNumber" name="PhoneNumber" class="input-line" placeholder="Phone Number" required>
-                    <input type="text" id="Message" name="Message" class="input-line" placeholder="Message" required>
-                    <button class="curved-button1" type="submit">Contact Us</button>
+                    <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="Full Name"></asp:TextBox>
+                    <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Email" TextMode= "Email" ></asp:TextBox>
+                    <asp:TextBox CssClass="input-line" ID="TextBox3" runat="server" placeholder="Phone Number"></asp:TextBox>
+                    <asp:TextBox CssClass="input-line" ID="TextBox4" runat="server" placeholder="Message"></asp:TextBox>
+                    <asp:Button ID="Button1" runat="server" Text="Save" OnClick="Button1_Click" CssClass="curved-button1" />
                 </formview>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                 <style>
                     .App-container {
                         width: 100%;
-                        height: 60%;
+                        height: 30%;
                         margin-top: -140px;
                         border: 1px solid #ccc;
                         padding: 40px;

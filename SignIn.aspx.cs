@@ -21,22 +21,40 @@ namespace SE_Project
             if (con.State == ConnectionState.Closed)
             {
                 con.Open();
-
             }
-            SqlCommand cmd = new SqlCommand("select Email,Password,Role from User_Sign_Up where Email='" + TextBox1.Text.Trim() + "' AND Password='" + TextBox2.Text.Trim() + "' AND Role='" + TextBox3.Text.Trim() + "' ", con);
+
+            SqlCommand cmd = new SqlCommand("select Email, Password, Role from User_Sign_Up where Email=@Email AND Password=@Password", con);
+            cmd.Parameters.AddWithValue("@Email", TextBox1.Text.Trim());
+            cmd.Parameters.AddWithValue("@Password", TextBox2.Text.Trim());
+
             SqlDataReader dr = cmd.ExecuteReader();
+
             if (dr.HasRows)
             {
                 while (dr.Read())
                 {
-                    Response.Write("<script>alert('" + dr.GetValue(0).ToString() + "');</script>");
+                    // Assuming the Role is retrieved from the database
+                    string userRole = dr["Role"].ToString();
+
+                    // Store the user's role in the session
+                    Session["UserRole"] = userRole;
+
+                    // Redirect based on the user's role
+                    if (userRole.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Response.Redirect("Appointment.aspx");
+                    }
+                    else if (userRole.Equals("User", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Response.Redirect("Appointment.aspx");
+                    }
                 }
-                Response.Redirect("Appointment.aspx");
             }
             else
             {
                 Response.Write("<script>alert('Invalid credentials');</script>");
             }
         }
+
     }
 }

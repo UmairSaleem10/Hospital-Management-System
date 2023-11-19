@@ -76,6 +76,7 @@
     <Content Include="ContactUs.aspx" />
     <Content Include="Datatables\css\jquery.dataTables.min.css" />
     <Content Include="Datatables\Js\jquery.dataTables.min_Js.js" />
+    <Content Include="Doctor.aspx" />
     <Content Include="fontawesome\css\all.css" />
     <Content Include="fontawesome\css\all.min.css" />
     <Content Include="fontawesome\css\brands.css" />
@@ -2139,6 +2140,7 @@
     <Content Include="images\dep.jfif" />
     <Content Include="images\doct.jpg" />
     <Content Include="images\doctor.jpg" />
+    <Content Include="images\Doctors-pro.png" />
     <Content Include="images\HealthCare.png" />
     <Content Include="images\HealthCare1.png" />
     <Content Include="images\hosp.jfif" />
@@ -2177,6 +2179,13 @@
     </Compile>
     <Compile Include="ContactUs.aspx.designer.cs">
       <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor.aspx.cs">
+      <DependentUpon>Doctor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor.aspx.designer.cs">
+      <DependentUpon>Doctor.aspx</DependentUpon>
     </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>

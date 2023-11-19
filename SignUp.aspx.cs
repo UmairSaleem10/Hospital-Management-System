@@ -24,6 +24,8 @@ namespace SE_Project
             {
                 try
                 {
+                    string gender = ddlGender.SelectedItem.Text;
+                    string role = ddlRole.SelectedItem.Text;
                     SqlConnection con = new SqlConnection(strcon);
                     if (con.State == ConnectionState.Closed)
                     {
@@ -35,8 +37,8 @@ namespace SE_Project
                     cmd.Parameters.AddWithValue("@Username", TextBox2.Text.Trim());
                     cmd.Parameters.AddWithValue("@Password", TextBox3.Text.Trim());
                     cmd.Parameters.AddWithValue("@Email", TextBox4.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Gender", TextBox5.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Role", TextBox6.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Gender", gender);
+                    cmd.Parameters.AddWithValue("@Role", role);
 
                     cmd.ExecuteNonQuery();
                     con.Close();

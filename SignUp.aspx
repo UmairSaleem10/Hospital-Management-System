@@ -13,7 +13,7 @@
                 margin-bottom: 20px;
                 padding: 5px;
                 color: #000000;
-                Background-color: #00000000
+                Background-color: #00000000;
             }
 
                 .input-line:focus {
@@ -31,7 +31,7 @@
                 background-color: #ddd; /* Background color */
                 border: 1px solid #ddd;
                 border: none;
-                color: #ddd;
+                color: #000;
             }
             .image-container {
                 margin-bottom: 20px;
@@ -70,17 +70,26 @@
             <div class="image-container" style="width: 100%; height: 350px; bottom: 400px">
                 <img src="images/HealthCare.png" style="float:left; 
             margin-right:10px; width: 480px; height: 340px; bottom:350px; margin-left: 40px; text-align:center; margin-top: -40px">
-                    <div class="contact-us-container">
-                <formview>
+                    
+                <div class="contact-us-container">
+                    <formview>
                     <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="FirstName"></asp:TextBox>
                     <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" placeholder="UserName"></asp:TextBox>
                     <asp:TextBox CssClass="form-control" ID="TextBox3" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
                     <asp:TextBox CssClass="form-control" ID="TextBox4" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>
-                    <asp:TextBox CssClass="form-control" ID="TextBox5" runat="server" placeholder="Gender" ></asp:TextBox>
-                    <asp:TextBox CssClass="form-control" ID="TextBox6" runat="server" placeholder="Role"></asp:TextBox>
-                    <asp:Button ID="Button1" runat="server" Text="Sign Up" OnClick="Button1_Click" CssClass="curved-button1" />
+                    <label for="ddlGender">Gender:</label>
+                    <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="Male" Value="Male" />
+                        <asp:ListItem Text="Female" Value="Female" />
+                    </asp:DropDownList>
+                    <label for="ddlRole">Role:</label>
+                        <asp:DropDownList ID="ddlRole" runat="server" CssClass="form-control">
+                            <asp:ListItem Text="Admin" Value="Admin" />
+                        <asp:ListItem Text="User" Value="User" />
+                        </asp:DropDownList>
+                    <asp:Button ID="Button2" runat="server" Text="Sign Up" OnClick="Button1_Click" CssClass="curved-button1" />
                 </formview>
-                        </div>
+                </div>
             </div>
             </div>
             </body>

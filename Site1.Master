@@ -45,7 +45,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px; /* Adjust padding as needed */
+            padding: 10px 10px; /* Adjust padding as needed */
         }
         .footer-container {
             position: sticky;
@@ -63,10 +63,10 @@
             text-decoration: none;
         }
           .department-menu {
-        background-color: #fff; /* Set the background color of the container */
-        padding: 10px; /* Add padding to the container */
-        border-radius: 5px; /* Optional: Add border-radius for rounded corners */
-        color: #000; /* Set the text color to black */
+        background-color: #fff; 
+        padding: 10px; 
+        border-radius: 5px; 
+        color: #000; 
     }
 
     .department-menu ul {
@@ -132,6 +132,12 @@
         </asp:Menu>
     </li>
 </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link"  href="Doctor.aspx"> <h6>Doctors</h6> <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">

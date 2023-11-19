@@ -94,12 +94,12 @@
                 <div class="app-container">
                     <formview>
                     <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="Name"></asp:TextBox>
-                    <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Dr_Name" ></asp:TextBox>
-                    <label for="ddlGender">Dr_Name:</label>
-                        <asp:DropDownList ID="ddlGender" runat="server" CssClass="input-line">
+                    <label for="ddlDoctors">Dr_Name:</label>
+                        <asp:DropDownList ID="ddlDoctors" runat="server" CssClass="input-line">
                         </asp:DropDownList>
-                        <asp:TextBox CssClass="input-line" ID="TextBox4" runat="server" placeholder="Gender"></asp:TextBox>
-                        <asp:TextBox CssClass="input-line" ID="TextBox5" runat="server" placeholder="Time" TextMode="DateTime"></asp:TextBox>
+                        <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Disease"></asp:TextBox>
+                        <asp:TextBox CssClass="input-line" ID="TextBox3" runat="server" placeholder="Gender"></asp:TextBox>
+                        <asp:TextBox CssClass="input-line" ID="TextBox4" runat="server" placeholder="Time" TextMode="DateTime"></asp:TextBox>
                     <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" CssClass="curved-button1" />
                 </formview>
                 </div>

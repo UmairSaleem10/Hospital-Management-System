@@ -22,7 +22,7 @@
                     height: 480px;
                 }
                 .image-container {
-                    margin-bottom: 20px; /* Adjust the margin as needed to create space between image and text */
+                    margin-bottom: 20px; /* space between image and text */
                 }
                 .right-align {
                     text-align: left;
@@ -49,7 +49,7 @@
                 }
 
                 .background-theme {
-                    padding: 20px; /* Adjust the padding as needed */
+                    padding: 20px; 
                 }
 
                 .department-container {
@@ -62,7 +62,7 @@
                     width: 300px;
                     margin: 20px;
                     text-align: center;
-                    background-color: #fff; /* Adjust background color as needed */
+                    background-color: #fff; 
                     padding: 20px;
                     border-radius: 20px;
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -76,11 +76,11 @@
                 }
 
                 .department-box h3 {
-                    color: #215d8c; /* Adjust text color as needed */
+                    color: #215d8c;
                 }
 
                 .department-box p {
-                    color: #333; /* Adjust text color as needed */
+                    color: #333; 
                 }
 
                 .department-box .curved-button {
@@ -227,11 +227,11 @@
                     <h2>Quick Entry</h2>
                     <div class="contact-us-container">
                 <formview>
-                    <input type="text" id="fullName1" name="fullName" class="input-line" placeholder="Full Name" required>
-                    <input type="text" id="Email1" name="Email" class="input-line" placeholder="Email" required>
-                    <input type="text" id="PhoneNumber1" name="PhoneNumber" class="input-line" placeholder="Phone Number" required>
-                    <input type="text" id="Message1" name="Message" class="input-line" placeholder="Message" required>
-                    <button class="curved-button1" type="submit">Contact Us</button>
+                    <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="Full Name"></asp:TextBox>
+                    <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Email" TextMode= "Email" ></asp:TextBox>
+                    <asp:TextBox CssClass="input-line" ID="TextBox3" runat="server" placeholder="Phone Number" TextMode="Number"></asp:TextBox>
+                    <asp:TextBox CssClass="input-line" ID="TextBox4" runat="server" placeholder="Message"></asp:TextBox>
+                    <asp:Button ID="Button1" runat="server" Text="Save" OnClick="Button1_Click" CssClass="curved-button1" />
                 </formview>
                         </div>
                 </div>
