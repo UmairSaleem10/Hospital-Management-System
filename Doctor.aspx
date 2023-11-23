@@ -152,10 +152,23 @@
             </p>
         </p>
                     <asp:Button ID="Button1" runat="server" Text="View Doctors" OnClick="Button1_Click" CssClass="curved-button" />
-                    <asp:GridView class="gridView" ID ="gridView" runat="server" Visible="false">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" connectionString = "Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true" 
+                    SelectCommand ="SELECT DoctorID, Name, Speciality, Email, Address, Created_AT, Updated_AT FROM Doctor"></asp:SqlDataSource>
+                    <asp:GridView class="gridView" ID ="gridView" runat="server" Visible="false" AutoGenerateColumns="False" OnRowCommand="gridView_RowCommand" OnRowDeleting="gridView_RowDeleting" DataKeyNames="DoctorID">
+                        <Columns>
+                            <asp:BoundField DataField="DoctorID" HeaderText="DoctorID" SortExpression="DoctorID" />
+                        <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                        <asp:BoundField DataField="Speciality" HeaderText="Speciality" SortExpression="Speciality" />
+                        <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                        <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
+                        <asp:BoundField DataField="Created_AT" HeaderText="Created_AT" SortExpression="Created_AT" />
+                        <asp:BoundField DataField="Updated_AT" HeaderText="Updated_AT" SortExpression="Updated_AT" />
+                        <asp:ButtonField ButtonType="Button" Text="Edit" CommandName="Edit" HeaderText="Edit" />
+                        <asp:ButtonField ButtonType="Button" Text="Delete" CommandName="Delete" HeaderText="Delete"/>
+                    </Columns>
                     </asp:GridView>
     </div>
-
+                
                 <div class="container" id="adminContent" runat="server" visible="false">
                     <h2>Add Doctor</h2>
                 <formview class="form">

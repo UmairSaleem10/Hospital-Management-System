@@ -142,18 +142,18 @@
                     <div class="department-box">
         <h3>Surgery Department</h3>
         <p>Explore our advanced brain care services and meet our dedicated neurosurgeons.</p>
-        <a class="curved-button" href="BrainDepartment.aspx">Learn More</a>
+        <a class="curved-button" href="SurgeryDepartment.aspx">Learn More</a>
     </div>
 
                     <div class="department-box">
         <h3>Physiotherapy Department</h3>
         <p>Explore our advanced brain care services and meet our dedicated neurosurgeons.</p>
-        <a class="curved-button" href="BrainDepartment.aspx">Learn More</a>
+        <a class="curved-button" href="PhysiotherapyDepartment.aspx">Learn More</a>
     </div>
                     <div class="department-box">
         <h3>Radiology Department</h3>
         <p>Explore our advanced brain care services and meet our dedicated neurosurgeons.</p>
-        <a class="curved-button" href="BrainDepartment.aspx">Learn More</a>
+        <a class="curved-button" href="RadiologyDepartment.aspx">Learn More</a>
     </div>
 </div>
                 

@@ -73,10 +73,15 @@
     <Content Include="Bootstrap\Js\bootstrap.min.js" />
     <Content Include="Bootstrap\Js\jquery-3.3.1.slim.min.js" />
     <Content Include="Bootstrap\Js\popper.min.js" />
+    <Content Include="CardiologyDepartment.aspx" />
     <Content Include="ContactUs.aspx" />
     <Content Include="Datatables\css\jquery.dataTables.min.css" />
     <Content Include="Datatables\Js\jquery.dataTables.min_Js.js" />
     <Content Include="Doctor.aspx" />
+    <Content Include="Edit-Doctor.aspx" />
+    <Content Include="edit-Employee.aspx" />
+    <Content Include="Employee.aspx" />
+    <Content Include="EyeDepartment.aspx" />
     <Content Include="fontawesome\css\all.css" />
     <Content Include="fontawesome\css\all.min.css" />
     <Content Include="fontawesome\css\brands.css" />
@@ -2136,13 +2141,17 @@
     <Content Include="ForgotPassword.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="images\About.png" />
+    <Content Include="images\cardiology.jpg" />
     <Content Include="images\contact.jpg" />
     <Content Include="images\dep.jfif" />
     <Content Include="images\doct.jpg" />
     <Content Include="images\doctor.jpg" />
     <Content Include="images\Doctors-pro.png" />
+    <Content Include="images\eye-infection.png" />
+    <Content Include="images\eye.jpg" />
     <Content Include="images\HealthCare.png" />
     <Content Include="images\HealthCare1.png" />
+    <Content Include="images\heartbeat.png" />
     <Content Include="images\hosp.jfif" />
     <Content Include="images\Hospital-building.jpg" />
     <Content Include="images\Hospital2.jpg" />
@@ -2154,6 +2163,7 @@
     <Content Include="images\pharmacy.jpg" />
     <Content Include="images\theme.jpg" />
     <Content Include="images\theme1.jpg" />
+    <Content Include="images\worker.png" />
     <Content Include="SignIn.aspx" />
     <Content Include="SignUp.aspx" />
     <Content Include="Web.config" />
@@ -2173,6 +2183,13 @@
     <Compile Include="Appointment.aspx.designer.cs">
       <DependentUpon>Appointment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CardiologyDepartment.aspx.cs">
+      <DependentUpon>CardiologyDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CardiologyDepartment.aspx.designer.cs">
+      <DependentUpon>CardiologyDepartment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ContactUs.aspx.cs">
       <DependentUpon>ContactUs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2186,6 +2203,34 @@
     </Compile>
     <Compile Include="Doctor.aspx.designer.cs">
       <DependentUpon>Doctor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Edit-Doctor.aspx.cs">
+      <DependentUpon>Edit-Doctor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Edit-Doctor.aspx.designer.cs">
+      <DependentUpon>Edit-Doctor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="edit-Employee.aspx.cs">
+      <DependentUpon>edit-Employee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="edit-Employee.aspx.designer.cs">
+      <DependentUpon>edit-Employee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.aspx.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee.aspx.designer.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EyeDepartment.aspx.cs">
+      <DependentUpon>EyeDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EyeDepartment.aspx.designer.cs">
+      <DependentUpon>EyeDepartment.aspx</DependentUpon>
     </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
