@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
@@ -10,27 +9,21 @@ using System.Web.UI.WebControls;
 
 namespace SE_Project
 {
-    public partial class Doctor : System.Web.UI.Page
+    public partial class Account : System.Web.UI.Page
     {
         string strcon = "Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true";
-        // Restriction User can't add doctor
         protected void Page_Load(object sender, EventArgs e)
         {
-            userContent.Visible = true;
             string userRole = Session["UserRole"] as string;
             if (userRole != null)
             {
-                userContent.Visible = true; // Content visible to both users and admins
                 if (userRole.Equals("Admin", StringComparison.OrdinalIgnoreCase))
                 {
-                    adminContent.Visible = true; // Content visible only to admins
+                    gridView.Columns[6].Visible = true;
                     gridView.Columns[7].Visible = true;
-                    gridView.Columns[8].Visible = true;
                 }
             }
         }
-
-        // Insert data in Doctor table
         protected void Button2_Click(object sender, EventArgs e)
         {
             try
@@ -40,22 +33,20 @@ namespace SE_Project
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("INSERT INTO Doctor (DoctorID, Name, Speciality, Email, Address, Created_AT, Updated_AT) VALUES (@DoctorID, @Name, @Speciality, @Email, @Address, GETDATE(), GETDATE())", con);
-                cmd.Parameters.AddWithValue("@DoctorID", TextBox0.Text.Trim());
-                cmd.Parameters.AddWithValue("@Name", TextBox1.Text.Trim());
-                cmd.Parameters.AddWithValue("@Speciality", TextBox2.Text.Trim());
-                cmd.Parameters.AddWithValue("@Email", TextBox3.Text.Trim());
-                cmd.Parameters.AddWithValue("@Address", TextBox4.Text.Trim());
+                SqlCommand cmd = new SqlCommand("INSERT INTO account (ID, Account_Name, Account_No, Bank_Name, Created_AT, Updated_AT) VALUES (@ID, @Account_Name, @Account_No, @Bank_Name, GETDATE(), GETDATE())", con);
+                cmd.Parameters.AddWithValue("@ID", TextBox0.Text.Trim());
+                cmd.Parameters.AddWithValue("@Account_Name", TextBox1.Text.Trim());
+                cmd.Parameters.AddWithValue("@Account_No", TextBox2.Text.Trim());
+                cmd.Parameters.AddWithValue("@Bank_Name", TextBox3.Text.Trim());
                 cmd.ExecuteNonQuery();
                 con.Close();
-                Response.Write("<script>alert('Doctor added successfully!');</script>");
+                Response.Write("<script>alert('Account added successfully!');</script>");
             }
             catch (Exception ex)
             {
                 Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
             }
         }
-
         // Show Data in Grid View
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -63,7 +54,7 @@ namespace SE_Project
             {
                 using (SqlConnection con = new SqlConnection(strcon))
                 {
-                    using (SqlCommand cmd = new SqlCommand("SELECT DoctorID, Name, Speciality, Email, Address, Created_AT, Updated_AT FROM Doctor", con))
+                    using (SqlCommand cmd = new SqlCommand("SELECT ID, Account_Name, Account_No, Bank_Name, Created_AT, Updated_AT FROM account", con))
                     {
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -78,6 +69,7 @@ namespace SE_Project
             catch (Exception ex)
             {
                 Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
+
             }
         }
         protected void gridView_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -87,16 +79,16 @@ namespace SE_Project
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = gridView.Rows[rowIndex];
                 //string doctorID = row.Cells[0].Text; // Assuming DoctorID is in the first cell
-                string doctorID = gridView.DataKeys[rowIndex].Value.ToString();
-                Response.Redirect($"Edit-Doctor.aspx?DoctorID={doctorID}");
+                string id = gridView.DataKeys[rowIndex].Value.ToString();
+                Response.Redirect($"edit-account.aspx?ID={id}");
             }
             else if (e.CommandName == "Delete")
             {
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
                 if (rowIndex >= 0 && rowIndex < gridView.Rows.Count)
                 {
-                    string doctorID = gridView.DataKeys[rowIndex].Value.ToString();
-                    DeleteDoctor(doctorID);
+                    string id = gridView.DataKeys[rowIndex].Value.ToString();
+                    DeleteAccount(id);
                 }
             }
         }
@@ -105,20 +97,20 @@ namespace SE_Project
             int rowIndex = e.RowIndex;
             if (rowIndex >= 0 && rowIndex < gridView.Rows.Count)
             {
-                string doctorID = gridView.DataKeys[rowIndex].Value.ToString();
-                DeleteDoctor(doctorID);
+                string id = gridView.DataKeys[rowIndex].Value.ToString();
+                DeleteAccount(id);
                 BindGridView(); // Refresh the GridView after deletion
             }
         }
-        private void DeleteDoctor(string doctorID)
+        private void DeleteAccount(string id)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(strcon))
                 {
-                    using (SqlCommand cmd = new SqlCommand("DELETE FROM Doctor WHERE DoctorID = @DoctorID", con))
+                    using (SqlCommand cmd = new SqlCommand("DELETE FROM account WHERE ID = @ID", con))
                     {
-                        cmd.Parameters.AddWithValue("@DoctorID", doctorID);
+                        cmd.Parameters.AddWithValue("@ID", id);
                         con.Open();
                         cmd.ExecuteNonQuery();
                         Response.Write("<script>alert('Doctor deleted successfully!');</script>");
@@ -139,7 +131,7 @@ namespace SE_Project
             {
                 using (SqlConnection con = new SqlConnection(strcon))
                 {
-                    using (SqlCommand cmd = new SqlCommand("SELECT DoctorID, Name, Speciality, Email, Address, Created_AT, Updated_AT FROM Doctor", con))
+                    using (SqlCommand cmd = new SqlCommand("SELECT ID, Account_Name, Account_No, Bank_Name, Created_AT, Updated_AT FROM account", con))
                     {
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();

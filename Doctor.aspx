@@ -163,8 +163,8 @@
                         <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
                         <asp:BoundField DataField="Created_AT" HeaderText="Created_AT" SortExpression="Created_AT" />
                         <asp:BoundField DataField="Updated_AT" HeaderText="Updated_AT" SortExpression="Updated_AT" />
-                        <asp:ButtonField ButtonType="Button" Text="Edit" CommandName="Edit" HeaderText="Edit" />
-                        <asp:ButtonField ButtonType="Button" Text="Delete" CommandName="Delete" HeaderText="Delete"/>
+                        <asp:ButtonField ButtonType="Button" Text="Edit" CommandName="Edit" HeaderText="Edit" visible="false"/>
+                        <asp:ButtonField ButtonType="Button" Text="Delete" CommandName="Delete" HeaderText="Delete" Visible="false"/>
                     </Columns>
                     </asp:GridView>
     </div>

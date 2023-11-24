@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
+    <Content Include="Account.aspx" />
     <Content Include="Appointment.aspx" />
     <Content Include="Bootstrap\Css\bootstrap.min.css" />
     <Content Include="Bootstrap\Js\bootstrap.min.js" />
@@ -78,6 +79,7 @@
     <Content Include="Datatables\css\jquery.dataTables.min.css" />
     <Content Include="Datatables\Js\jquery.dataTables.min_Js.js" />
     <Content Include="Doctor.aspx" />
+    <Content Include="edit-account.aspx" />
     <Content Include="Edit-Doctor.aspx" />
     <Content Include="edit-Employee.aspx" />
     <Content Include="Employee.aspx" />
@@ -2141,6 +2143,7 @@
     <Content Include="ForgotPassword.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="images\About.png" />
+    <Content Include="images\account.png" />
     <Content Include="images\cardiology.jpg" />
     <Content Include="images\contact.jpg" />
     <Content Include="images\dep.jfif" />
@@ -2176,6 +2179,13 @@
     <Compile Include="AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account.aspx.cs">
+      <DependentUpon>Account.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account.aspx.designer.cs">
+      <DependentUpon>Account.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Appointment.aspx.cs">
       <DependentUpon>Appointment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2203,6 +2213,13 @@
     </Compile>
     <Compile Include="Doctor.aspx.designer.cs">
       <DependentUpon>Doctor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="edit-account.aspx.cs">
+      <DependentUpon>edit-account.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="edit-account.aspx.designer.cs">
+      <DependentUpon>edit-account.aspx</DependentUpon>
     </Compile>
     <Compile Include="Edit-Doctor.aspx.cs">
       <DependentUpon>Edit-Doctor.aspx</DependentUpon>
