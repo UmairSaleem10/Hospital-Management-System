@@ -235,6 +235,11 @@
                 </formview>
                         </div>
                 </div>
+                <div>
+                    <h2>Our Features</h2>
+                    <asp:Button CssClass="curved-button1" ID="btnPage1" runat="server" Text="Patient Record" PostBackUrl="~/Patient-Record.aspx" />
+                    <asp:Button CssClass="curved-button1" ID="Button2" runat="server" Text="Appointment fixation" PostBackUrl="~/Appointment.aspx" />
+                </div>
                 </div>
         </body>
     </html>

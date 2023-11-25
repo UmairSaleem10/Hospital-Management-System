@@ -82,6 +82,7 @@
     <Content Include="edit-account.aspx" />
     <Content Include="Edit-Doctor.aspx" />
     <Content Include="edit-Employee.aspx" />
+    <Content Include="edit-manager.aspx" />
     <Content Include="edit-patient.aspx" />
     <Content Include="Employee.aspx" />
     <Content Include="EyeDepartment.aspx" />
@@ -2169,6 +2170,7 @@
     <Content Include="images\theme.jpg" />
     <Content Include="images\theme1.jpg" />
     <Content Include="images\worker.png" />
+    <Content Include="Manager.aspx" />
     <Content Include="Patient-Record.aspx" />
     <Content Include="patient.aspx" />
     <Content Include="SignIn.aspx" />
@@ -2239,6 +2241,13 @@
     <Compile Include="edit-Employee.aspx.designer.cs">
       <DependentUpon>edit-Employee.aspx</DependentUpon>
     </Compile>
+    <Compile Include="edit-manager.aspx.cs">
+      <DependentUpon>edit-manager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="edit-manager.aspx.designer.cs">
+      <DependentUpon>edit-manager.aspx</DependentUpon>
+    </Compile>
     <Compile Include="edit-patient.aspx.cs">
       <DependentUpon>edit-patient.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2273,6 +2282,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager.aspx.cs">
+      <DependentUpon>Manager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager.aspx.designer.cs">
+      <DependentUpon>Manager.aspx</DependentUpon>
     </Compile>
     <Compile Include="Patient-Record.aspx.cs">
       <DependentUpon>Patient-Record.aspx</DependentUpon>

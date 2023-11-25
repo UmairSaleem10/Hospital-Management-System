@@ -49,8 +49,6 @@ namespace SE_Project
         }
         private void LoadPatientData(string patientID)
         {
-            string doctorName = ddlDoctors.SelectedItem.Text;
-            string gender = ddlGender.SelectedItem.Text;
             using (SqlConnection con = new SqlConnection(strcon))
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT PatientID, Name, Disease, D_Name, Address, Gender FROM Patient WHERE PatientID = @PatientID", con))
@@ -65,9 +63,19 @@ namespace SE_Project
                         TextBox0.Text = reader["PatientID"].ToString();
                         TextBox1.Text = reader["Name"].ToString();
                         TextBox2.Text = reader["Disease"].ToString();
-                        doctorName = reader["D_Name"].ToString();
+
+                        // Set the selected value of the DropDownList based on the doctorName
+                        string doctorName = reader["D_Name"].ToString();
+                        if (ddlDoctors.Items.FindByValue(doctorName) != null)
+                        {
+                            ddlDoctors.SelectedValue = doctorName;
+                        }
                         TextBox3.Text = reader["Address"].ToString();
-                        gender = reader["Gender"].ToString();
+                        string gender = reader["Gender"].ToString();
+                        if (ddlGender.Items.FindByValue(gender) != null)
+                        {
+                            ddlGender.SelectedValue = gender;
+                        }
                     }
                 }
             }
