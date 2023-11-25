@@ -15,7 +15,7 @@ namespace SE_Project
         {
             if (!IsPostBack)
             {
-                // Retrieve DoctorID from the query string
+                // Retrieve ID from the query string
                 if (Request.QueryString["ID"] != null)
                 {
                     string id = Request.QueryString["ID"];
@@ -39,7 +39,7 @@ namespace SE_Project
                         TextBox0.Text = reader["ID"].ToString();
                         TextBox1.Text = reader["Account_Name"].ToString();
                         TextBox2.Text = reader["Account_No"].ToString();
-                        TextBox2.Text = reader["Bank_Name"].ToString();
+                        TextBox3.Text = reader["Bank_Name"].ToString();
                     }
                 }
             }

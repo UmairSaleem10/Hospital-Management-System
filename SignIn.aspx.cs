@@ -23,9 +23,10 @@ namespace SE_Project
                 con.Open();
             }
 
-            SqlCommand cmd = new SqlCommand("select Email, Password, Role from User_Sign_Up where Email=@Email AND Password=@Password", con);
+            SqlCommand cmd = new SqlCommand("select Email, Password, Role from User_Sign_Up where Email=@Email AND Password=@Password AND Role = @Role", con);
             cmd.Parameters.AddWithValue("@Email", TextBox1.Text.Trim());
             cmd.Parameters.AddWithValue("@Password", TextBox2.Text.Trim());
+            cmd.Parameters.AddWithValue("@Role", TextBox3.Text.Trim());
 
             SqlDataReader dr = cmd.ExecuteReader();
 

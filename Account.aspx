@@ -74,10 +74,10 @@
                         text-align: center;
                         font-size: 20px;
                     }
-                    .gridView {
+                .gridView {
                     border-collapse: collapse;
                     width: 100%;
-                    margin-top:20px;
+                    margin-top: 20px;
                 }
 
                     .gridView:start{
@@ -102,38 +102,37 @@
                         }
             </style>
             <div class="background-theme">
-                <img src="images/account.png"/ width="100%"; height="500" class="image-adjust above-image"> 
-                <div class="about-us-container1">
-                    
-                    <div class="contact-us-container">
-                <formview>
-                    <h2>Add Account Details</h2>
-                    <asp:TextBox CssClass="input-line" ID="TextBox0" runat="server" placeholder="ID"></asp:TextBox>
-                    <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="Account_Name"></asp:TextBox>
-                    <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Account_No"></asp:TextBox>
-                    <asp:TextBox CssClass="input-line" ID="TextBox3" runat="server" placeholder="Bank_Name"></asp:TextBox>
-                    <asp:Button ID="Button1" runat="server" Text="Save" onclick="Button2_Click" CssClass="curved-button1" />
-                </formview>
-                        </div>
+                <img src="images/account.png"/ width="100%"; height="500" class="image-adjust above-image">
+
+                <div class="contact-us-container">
+                    <formview>
+                        <h2>Add Account Details</h2>
+                        <asp:TextBox CssClass="input-line" ID="TextBox0" runat="server" placeholder="ID"></asp:TextBox>
+                        <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="Account_Name"></asp:TextBox>
+                        <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Account_No"></asp:TextBox>
+                        <asp:TextBox CssClass="input-line" ID="TextBox3" runat="server" placeholder="Bank_Name"></asp:TextBox>
+                        <asp:Button ID="Button1" runat="server" Text="Save" OnClick="Button2_Click" CssClass="curved-button1" />
+                    </formview>
                 </div>
+
                 <div class="doctor-container">
                     <asp:Button ID="Button2" runat="server" Text="View Details" OnClick="Button1_Click" CssClass="curved-button1" />
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" connectionString = "Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true" 
-                    SelectCommand ="SELECT ID, Account_Name, Account_No, Bank_Name, Created_AT, Updated_AT FROM account"></asp:SqlDataSource>
-                    <asp:GridView class="gridView" ID ="gridView" runat="server" Visible="false" AutoGenerateColumns="False" OnRowCommand="gridView_RowCommand" OnRowDeleting="gridView_RowDeleting" DataKeyNames="ID">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true"
+                        SelectCommand="SELECT ID, Account_Name, Account_No, Bank_Name, Created_AT, Updated_AT FROM account"></asp:SqlDataSource>
+                    <asp:GridView class="gridView" ID="gridView" runat="server" Visible="false" AutoGenerateColumns="False" OnRowCommand="gridView_RowCommand" OnRowDeleting="gridView_RowDeleting" DataKeyNames="ID">
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
-                        <asp:BoundField DataField="Account_Name" HeaderText="Account_Name" SortExpression="Account_Name" />
-                        <asp:BoundField DataField="Account_No" HeaderText="Account_No" SortExpression="Account_No" />
-                        <asp:BoundField DataField="Bank_Name" HeaderText="Bank_Name" SortExpression="Bank_Name" />
-                        <asp:BoundField DataField="Created_AT" HeaderText="Created_AT" SortExpression="Created_AT" />
-                        <asp:BoundField DataField="Updated_AT" HeaderText="Updated_AT" SortExpression="Updated_AT" />
-                        <asp:ButtonField ButtonType="Button" Text="Edit" CommandName="Edit" HeaderText="Edit" visible="false"/>
-                        <asp:ButtonField ButtonType="Button" Text="Delete" CommandName="Delete" HeaderText="Delete" Visible="false"/>
-                    </Columns>
+                            <asp:BoundField DataField="Account_Name" HeaderText="Account_Name" SortExpression="Account_Name" />
+                            <asp:BoundField DataField="Account_No" HeaderText="Account_No" SortExpression="Account_No" />
+                            <asp:BoundField DataField="Bank_Name" HeaderText="Bank_Name" SortExpression="Bank_Name" />
+                            <asp:BoundField DataField="Created_AT" HeaderText="Created_AT" SortExpression="Created_AT" />
+                            <asp:BoundField DataField="Updated_AT" HeaderText="Updated_AT" SortExpression="Updated_AT" />
+                            <asp:ButtonField ButtonType="Button" Text="Edit" CommandName="Edit" HeaderText="Edit" Visible="false" />
+                            <asp:ButtonField ButtonType="Button" Text="Delete" CommandName="Delete" HeaderText="Delete" Visible="false" />
+                        </Columns>
                     </asp:GridView>
                 </div>
-                </div>
+            </div>
         </body>
     </html>
 </asp:Content>
