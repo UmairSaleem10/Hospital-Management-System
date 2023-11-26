@@ -84,6 +84,7 @@
     <Content Include="edit-Employee.aspx" />
     <Content Include="edit-manager.aspx" />
     <Content Include="edit-patient.aspx" />
+    <Content Include="edit-worker.aspx" />
     <Content Include="Employee.aspx" />
     <Content Include="EyeDepartment.aspx" />
     <Content Include="fontawesome\css\all.css" />
@@ -2171,11 +2172,14 @@
     <Content Include="images\theme1.jpg" />
     <Content Include="images\worker.png" />
     <Content Include="Manager.aspx" />
+    <Content Include="med-edit.aspx" />
+    <Content Include="Medicines.aspx" />
     <Content Include="Patient-Record.aspx" />
     <Content Include="patient.aspx" />
     <Content Include="SignIn.aspx" />
     <Content Include="SignUp.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Worker.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutUs.aspx.cs">
@@ -2255,6 +2259,13 @@
     <Compile Include="edit-patient.aspx.designer.cs">
       <DependentUpon>edit-patient.aspx</DependentUpon>
     </Compile>
+    <Compile Include="edit-worker.aspx.cs">
+      <DependentUpon>edit-worker.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="edit-worker.aspx.designer.cs">
+      <DependentUpon>edit-worker.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Employee.aspx.cs">
       <DependentUpon>Employee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2289,6 +2300,20 @@
     </Compile>
     <Compile Include="Manager.aspx.designer.cs">
       <DependentUpon>Manager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="med-edit.aspx.cs">
+      <DependentUpon>med-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="med-edit.aspx.designer.cs">
+      <DependentUpon>med-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Medicines.aspx.cs">
+      <DependentUpon>Medicines.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Medicines.aspx.designer.cs">
+      <DependentUpon>Medicines.aspx</DependentUpon>
     </Compile>
     <Compile Include="Patient-Record.aspx.cs">
       <DependentUpon>Patient-Record.aspx</DependentUpon>
@@ -2325,6 +2350,13 @@
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Worker.aspx.cs">
+      <DependentUpon>Worker.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Worker.aspx.designer.cs">
+      <DependentUpon>Worker.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

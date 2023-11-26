@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace SE_Project
 {
-    public partial class edit_manager : System.Web.UI.Page
+    public partial class edit_worker : System.Web.UI.Page
     {
         string strcon = "Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true";
         protected void Page_Load(object sender, EventArgs e)
@@ -19,15 +19,15 @@ namespace SE_Project
                 if (Request.QueryString["ID"] != null)
                 {
                     string id = Request.QueryString["ID"];
-                    LoadManagerData(id);
+                    LoadWorkerData(id);
                 }
             }
         }
-        private void LoadManagerData(string id)
+        private void LoadWorkerData(string id)
         {
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT ID, Name, Email, Role, Address FROM Manager WHERE ID = @ID", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT ID, Name, Role, Address FROM worker WHERE ID = @ID", con))
                 {
                     cmd.Parameters.AddWithValue("@ID", id);
 
@@ -38,38 +38,36 @@ namespace SE_Project
                     {
                         TextBox0.Text = reader["ID"].ToString();
                         TextBox1.Text = reader["Name"].ToString();
-                        TextBox2.Text = reader["Email"].ToString();
 
                         // Set the selected value of the DropDownList based on the role
                         string role = reader["Role"].ToString();
-                        if (ddlmanager.Items.FindByValue(role) != null)
+                        if (ddlworker.Items.FindByValue(role) != null)
                         {
-                            ddlmanager.SelectedValue = role;
+                            ddlworker.SelectedValue = role;
                         }
 
-                        TextBox3.Text = reader["Address"].ToString();
+                        TextBox2.Text = reader["Address"].ToString();
                     }
                 }
             }
         }
-        private void UpdateManager(string id)
+        private void Updateworker(string id)
         {
-            string role = ddlmanager.SelectedItem.Text;
+            string role = ddlworker.SelectedItem.Text;
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                using (SqlCommand cmd = new SqlCommand("UPDATE Manager SET Name = @Name, Email = @Email, Role = @Role, Address = @Address, Updated_AT = GETDATE() WHERE ID = @ID", con))
+                using (SqlCommand cmd = new SqlCommand("UPDATE worker SET Name = @Name, Role = @Role, Address = @Address, Updated_AT = GETDATE() WHERE ID = @ID", con))
                 {
                     cmd.Parameters.AddWithValue("@ID", id);
                     cmd.Parameters.AddWithValue("@Name", TextBox1.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Email", TextBox2.Text.Trim());
                     cmd.Parameters.AddWithValue("@Role", role);
-                    cmd.Parameters.AddWithValue("@Address", TextBox3.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Address", TextBox2.Text.Trim());
                     con.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
             // Redirect back to the Doctor page after editing
-            Response.Redirect("Manager.aspx");
+            Response.Redirect("worker.aspx");
         }
         protected void btnEdit_Click(object sender, EventArgs e)
         {
@@ -77,7 +75,7 @@ namespace SE_Project
             if (Request.QueryString["ID"] != null)
             {
                 string id = Request.QueryString["ID"];
-                UpdateManager(id);
+                Updateworker(id);
             }
         }
     }

@@ -95,14 +95,14 @@
                         background-color: #f2f2f2;
                     }
 
-                    .gridView:after{
-                        border-color: #ddd;
-                        border-style: solid;
-                        border-width: 1px 1px 1px 0; /* Borders on all sides except right */
-                        padding: 10px;
-                    }
+                        .gridView:after {
+                            border-color: #ddd;
+                            border-style: solid;
+                            border-width: 1px 1px 1px 0; /* Borders on all sides except right */
+                            padding: 10px;
+                        }
 
-                        .gridView:end{
+                        .gridView:end {
                             border-width: 1px; /* Add right border for the last column */
                         }
             </style>
@@ -142,29 +142,38 @@
                         </p>
                     </p>
                     <asp:Button ID="Button1" runat="server" Text="View Employee" OnClick="Button1_Click" CssClass="curved-button" />
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" connectionString = "Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true" 
-                    SelectCommand ="SELECT Employee_ID, Name, Employment, Created_AT, Updated_AT FROM Employee"></asp:SqlDataSource>
-                    <asp:GridView class="gridView" ID ="gridView" runat="server" Visible="false" AutoGenerateColumns="False" OnRowCommand="gridView_RowCommand" OnRowDeleting="gridView_RowDeleting" DataKeyNames="Employee_ID">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true"
+                        SelectCommand="SELECT Employee_ID, Name, Role, Address, Created_AT, Updated_AT FROM Employee"></asp:SqlDataSource>
+                    <asp:GridView class="gridView" ID="gridView" runat="server" Visible="false" AutoGenerateColumns="False" OnRowCommand="gridView_RowCommand" OnRowDeleting="gridView_RowDeleting" DataKeyNames="Employee_ID">
                         <Columns>
                             <asp:BoundField DataField="Employee_ID" HeaderText="Employee_ID" SortExpression="Employee_ID" />
-                        <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                        <asp:BoundField DataField="Employment" HeaderText="Employment" SortExpression="Employment" />
-                        <asp:BoundField DataField="Created_AT" HeaderText="Created_AT" SortExpression="Created_AT" />
-                        <asp:BoundField DataField="Updated_AT" HeaderText="Updated_AT" SortExpression="Updated_AT" />
-                        <asp:ButtonField ButtonType="Button" Text="Edit" CommandName="Edit" HeaderText="Edit" />
-                        <asp:ButtonField ButtonType="Button" Text="Delete" CommandName="Delete" HeaderText="Delete" />
-                    </Columns>
+                            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                            <asp:BoundField DataField="Role" HeaderText="Role" SortExpression="Role" />
+                            <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
+                            <asp:BoundField DataField="Created_AT" HeaderText="Created_AT" SortExpression="Created_AT" />
+                            <asp:BoundField DataField="Updated_AT" HeaderText="Updated_AT" SortExpression="Updated_AT" />
+                            <asp:ButtonField ButtonType="Button" Text="Edit" CommandName="Edit" HeaderText="Edit" visible="false"/>
+                            <asp:ButtonField ButtonType="Button" Text="Delete" CommandName="Delete" HeaderText="Delete" visible="false"/>
+                        </Columns>
                     </asp:GridView>
-                    </div>
+                </div>
                 <div class="employee-container1" id="adminContent" runat="server" visible="false">
                     <h2>Add Employee</h2>
-                <formview class="form">
-                    <asp:TextBox CssClass="input-line" ID="TextBox0" runat="server" placeholder="Employee_ID"></asp:TextBox>
-                    <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="Name"></asp:TextBox>
-                    <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Employment"></asp:TextBox>
-                    <asp:Button ID="Button2" runat="server" Text="Save" OnClick="Button2_Click" CssClass="curved-button" />
-                </formview>
-                        </div>
+                    <formview class="form">
+                        <asp:TextBox CssClass="input-line" ID="TextBox0" runat="server" placeholder="Employee_ID"></asp:TextBox>
+                        <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="Name"></asp:TextBox>
+                        <label for="ddlemployee">Role:</label>
+                        <asp:DropDownList ID="ddlemployee" runat="server" CssClass="input-line">
+                            <asp:ListItem Text="Doctors " Value="Doctors " />
+                            <asp:ListItem Text="Nurses" Value="Nurses" />
+                            <asp:ListItem Text="Administrative Staff" Value="Administrative Staff" />
+                            <asp:ListItem Text="Technologists" Value="Technologists" />
+                            <asp:ListItem Text="Health Professionals" Value="Health Professionals" />
+                        </asp:DropDownList>
+                        <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Address"></asp:TextBox>
+                        <asp:Button ID="Button2" runat="server" Text="Save" OnClick="Button2_Click" CssClass="curved-button" />
+                    </formview>
+                </div>
                 </div>
         </body>
     </html>

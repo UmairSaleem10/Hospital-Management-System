@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="edit-manager.aspx.cs" Inherits="SE_Project.edit_manager" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="med-edit.aspx.cs" Inherits="SE_Project.med_edit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -59,24 +59,20 @@
             </style>
             <div class="background-theme">
                 <div class="container" id="adminContent" runat="server">
-                    <h2>Edit Manager</h2>
+                    <h2>Edit Doctor</h2>
                 <formview class="form">
-                    <label for="TextBox0" class="">ID:</label>
-                    <asp:TextBox CssClass="input-line" ID="TextBox0" runat="server" placeholder="ID"></asp:TextBox>
-                    <label for="TextBox1">Name:</label>
-                    <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="Name"></asp:TextBox>
-                    <label for="TextBox2">Email:</label>
-                    <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>
-                    <label for="ddlmanager">Role:</label>
-                        <asp:DropDownList ID="ddlmanager" runat="server" CssClass="input-line">
-                            <asp:ListItem Text="Supervisors" Value="Supervisors" />
-                            <asp:ListItem Text="Department Heads" Value="Department Heads" />
-                            <asp:ListItem Text="Administrative Managers" Value="Administrative Managers" />
-                            <asp:ListItem Text="Clinical Directors" Value="Clinical Directors" />
-                            <asp:ListItem Text="Facility Managers" Value="Facility Managers" />
-                        </asp:DropDownList>
-                    <label for="TextBox3">Address:</label>
-                    <asp:TextBox CssClass="input-line" ID="TextBox3" runat="server" placeholder="Address"></asp:TextBox>
+                    <label for="TextBox0" class="">MedicineID:</label>
+                    <asp:TextBox CssClass="input-line" ID="TextBox0" runat="server" placeholder="MedicineID"></asp:TextBox>
+                    <label for="TextBox1">PatientID:</label>
+                    <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="PatientID"></asp:TextBox>
+                    <label for="TextBox2">Medicine_Name:</label>
+                    <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Medicine_Name"></asp:TextBox>
+                    <label for="TextBox3">Description:</label>
+                    <asp:TextBox CssClass="input-line" ID="TextBox3" runat="server" placeholder="Description"></asp:TextBox>
+                    <label for="TextBox4">Price:</label>
+                    <asp:TextBox CssClass="input-line" ID="TextBox4" runat="server" placeholder="Price"></asp:TextBox>
+                    <label for="TextBox5">Stock:</label>
+                    <asp:TextBox CssClass="input-line" ID="TextBox5" runat="server" placeholder="Stock"></asp:TextBox>
                     <asp:Button ID="Button2" runat="server" Text="Edit" onclick="btnEdit_Click" CssClass="curved-button" />
                 </formview>
                         </div>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace SE_Project
 {
-    public partial class Employee : System.Web.UI.Page
+    public partial class Worker : System.Web.UI.Page
     {
         string strcon = "Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true";
         protected void Page_Load(object sender, EventArgs e)
@@ -27,44 +27,41 @@ namespace SE_Project
                 }
             }
         }
-        //Insert Employee Data into Database
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
             try
             {
-                string role = ddlemployee.SelectedItem.Text;
-                SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
+                string role = ddlworker.SelectedItem.Text;
+                using (SqlConnection con = new SqlConnection(strcon))
                 {
-                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO worker (ID, Name, Role, Address, Created_At,Updated_At) VALUES (@ID, @Name, @Role, @Address, GETDATE(), GETDATE())", con))
+                    {
+                        cmd.Parameters.AddWithValue("@ID", TextBox0.Text);
+                        cmd.Parameters.AddWithValue("@Name", TextBox1.Text);
+                        cmd.Parameters.AddWithValue("@Role", role);
+                        cmd.Parameters.AddWithValue("@Address", TextBox2.Text);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-                SqlCommand cmd = new SqlCommand("INSERT INTO Employee (Employee_ID, Name, Role, Address, Created_AT, Updated_AT) VALUES (@Employee_ID, @Name, @Role, @Address, GETDATE(), GETDATE())", con);
-                cmd.Parameters.AddWithValue("@Employee_ID", TextBox0.Text.Trim());
-                cmd.Parameters.AddWithValue("@Name", TextBox1.Text.Trim());
-                cmd.Parameters.AddWithValue("@Role", role);
-                cmd.Parameters.AddWithValue("@Address", TextBox2.Text.Trim());
-                cmd.ExecuteNonQuery();
-                con.Close();
-                Response.Write("<script>alert('Employee added successfully!');</script>");
+                Response.Write("<script>alert('Details saved successfully!');</script>");
             }
             catch (Exception ex)
             {
                 Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
             }
         }
-        // Show Data into Grid
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Button2_Click(object sender, EventArgs e)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(strcon))
                 {
-                    using (SqlCommand cmd = new SqlCommand("SELECT Employee_ID, Name, Role, Address, Created_AT, Updated_AT FROM Employee", con))
+                    using (SqlCommand cmd = new SqlCommand("SELECT ID, Name, Role, Address, Created_AT, Updated_AT FROM worker", con))
                     {
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
-
                         // Bind the data to the GridView
                         gridView.DataSource = dt;
                         gridView.DataBind();
@@ -75,6 +72,7 @@ namespace SE_Project
             catch (Exception ex)
             {
                 Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
+
             }
         }
         protected void gridView_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -83,19 +81,17 @@ namespace SE_Project
             {
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = gridView.Rows[rowIndex];
-                //string doctorID = row.Cells[0].Text; // Assuming DoctorID is in the first cell
-                string employee_ID = gridView.DataKeys[rowIndex].Value.ToString();
-                Response.Redirect($"edit-Employee.aspx?Employee_ID={employee_ID}");
+                string id = gridView.DataKeys[rowIndex].Value.ToString();
+                Response.Redirect($"edit-worker.aspx?ID={id}");
             }
             else if (e.CommandName == "Delete")
             {
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
                 if (rowIndex >= 0 && rowIndex < gridView.Rows.Count)
                 {
-                    string employee_ID = gridView.DataKeys[rowIndex].Value.ToString();
-                    DeleteEmployee(employee_ID);
+                    string id = gridView.DataKeys[rowIndex].Value.ToString();
+                    DeleteWorker(id);
                 }
-                
             }
         }
         protected void gridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -103,23 +99,23 @@ namespace SE_Project
             int rowIndex = e.RowIndex;
             if (rowIndex >= 0 && rowIndex < gridView.Rows.Count)
             {
-                string employee_ID = gridView.DataKeys[rowIndex].Value.ToString();
-                DeleteEmployee(employee_ID);
+                string id = gridView.DataKeys[rowIndex].Value.ToString();
+                DeleteWorker(id);
                 BindGridView(); // Refresh the GridView after deletion
-            } 
+            }
         }
-        private void DeleteEmployee(string employee_ID)
+        private void DeleteWorker(string id)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(strcon))
                 {
-                    using (SqlCommand cmd = new SqlCommand("DELETE FROM Employee WHERE Employee_ID = @Employee_ID", con))
+                    using (SqlCommand cmd = new SqlCommand("DELETE FROM worker WHERE ID = @ID", con))
                     {
-                        cmd.Parameters.AddWithValue("@Employee_ID", employee_ID);
+                        cmd.Parameters.AddWithValue("@ID", id);
                         con.Open();
                         cmd.ExecuteNonQuery();
-                        Response.Write("<script>alert('Doctor deleted successfully!');</script>");
+                        Response.Write("<script>alert('Patient deleted successfully!');</script>");
                         // Refresh the GridView after deletion
                         BindGridView();
                     }
@@ -136,7 +132,7 @@ namespace SE_Project
             {
                 using (SqlConnection con = new SqlConnection(strcon))
                 {
-                    using (SqlCommand cmd = new SqlCommand("SELECT Employee_ID, Name, Role, Address, Created_AT, Updated_AT FROM Employee", con))
+                    using (SqlCommand cmd = new SqlCommand("SELECT ID, Name, Role, Address, Created_AT, Updated_AT FROM worker", con))
                     {
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();

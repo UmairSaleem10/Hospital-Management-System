@@ -27,7 +27,7 @@ namespace SE_Project
         {
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT Employee_ID, Name, Employment FROM Employee WHERE Employee_ID = @Employee_ID", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT Employee_ID, Name, Role, Address FROM Employee WHERE Employee_ID = @Employee_ID", con))
                 {
                     cmd.Parameters.AddWithValue("@Employee_ID", employee_ID);
 
@@ -38,20 +38,30 @@ namespace SE_Project
                     {
                         TextBox0.Text = reader["Employee_ID"].ToString();
                         TextBox1.Text = reader["Name"].ToString();
-                        TextBox2.Text = reader["Employment"].ToString();
+
+                        // Set the selected value of the DropDownList based on the role
+                        string role = reader["Role"].ToString();
+                        if (ddlemployee.Items.FindByValue(role) != null)
+                        {
+                            ddlemployee.SelectedValue = role;
+                        }
+
+                        TextBox2.Text = reader["Address"].ToString();
                     }
                 }
             }
         }
         private void UpdateEmployee(string employee_ID)
         {
+            string role = ddlemployee.SelectedItem.Text;
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                using (SqlCommand cmd = new SqlCommand("UPDATE Employee SET Employee_ID = @Employee_ID, Name = @Name, Employment = @Employment, Updated_AT = GETDATE() WHERE Employee_ID = @Employee_ID", con))
+                using (SqlCommand cmd = new SqlCommand("UPDATE Employee SET Employee_ID = @Employee_ID, Name = @Name, Role = @Role, Address = @Address, Updated_AT = GETDATE() WHERE Employee_ID = @Employee_ID", con))
                 {
                     cmd.Parameters.AddWithValue("@Employee_ID", employee_ID);
                     cmd.Parameters.AddWithValue("@Name", TextBox1.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Employment", TextBox2.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Role", role);
+                    cmd.Parameters.AddWithValue("@Address", TextBox2.Text.Trim());
                     con.Open();
                     cmd.ExecuteNonQuery();
                     Response.Write("<script>alert('Employee edited successfully!');</script>");

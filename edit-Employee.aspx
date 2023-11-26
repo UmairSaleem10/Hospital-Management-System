@@ -65,8 +65,16 @@
                     <asp:TextBox CssClass="input-line" ID="TextBox0" runat="server" placeholder="Employee_ID"></asp:TextBox>
                     <label for="TextBox1">Name:</label>
                     <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="Name"></asp:TextBox>
-                    <label for="TextBox2">Employment:</label>
-                    <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Employment"></asp:TextBox>
+                    <label for="ddlemployee">Role:</label>
+                        <asp:DropDownList ID="ddlemployee" runat="server" CssClass="input-line">
+                            <asp:ListItem Text="Doctor " Value="Doctor " />
+                            <asp:ListItem Text="Nurses" Value="Nurses" />
+                            <asp:ListItem Text="Administrative Staff" Value="Administrative Staff" />
+                            <asp:ListItem Text="Technologists" Value="Technologists" />
+                            <asp:ListItem Text="Health Professionals" Value="Health Professionals" />
+                        </asp:DropDownList>
+                    <label for="TextBox2">Address:</label>
+                    <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Address"></asp:TextBox>
                     <asp:Button ID="Button2" runat="server" Text="Edit" onclick="btnEdit_Click" CssClass="curved-button" />
                 </formview>
                         </div>
