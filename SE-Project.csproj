@@ -87,6 +87,7 @@
     <Content Include="edit-worker.aspx" />
     <Content Include="Employee.aspx" />
     <Content Include="EyeDepartment.aspx" />
+    <Content Include="Feedback.aspx" />
     <Content Include="fontawesome\css\all.css" />
     <Content Include="fontawesome\css\all.min.css" />
     <Content Include="fontawesome\css\brands.css" />
@@ -2279,6 +2280,13 @@
     </Compile>
     <Compile Include="EyeDepartment.aspx.designer.cs">
       <DependentUpon>EyeDepartment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Feedback.aspx.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Feedback.aspx.designer.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
     </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
