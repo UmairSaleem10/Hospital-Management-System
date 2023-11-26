@@ -2177,6 +2177,7 @@
     <Content Include="Medicines.aspx" />
     <Content Include="Patient-Record.aspx" />
     <Content Include="patient.aspx" />
+    <Content Include="Pharmacy.aspx" />
     <Content Include="SignIn.aspx" />
     <Content Include="SignUp.aspx" />
     <Content Include="Web.config" />
@@ -2336,6 +2337,13 @@
     </Compile>
     <Compile Include="patient.aspx.designer.cs">
       <DependentUpon>patient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pharmacy.aspx.cs">
+      <DependentUpon>Pharmacy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pharmacy.aspx.designer.cs">
+      <DependentUpon>Pharmacy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignIn.aspx.cs">

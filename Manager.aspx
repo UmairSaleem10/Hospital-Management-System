@@ -117,7 +117,7 @@
             </style>
             <div class="background-theme">
                 <img src="images/doctor.jpg"/ width="100%" height="560" class="image-adjust above-image"> 
-                <div class="container" id="userContent" runat="server" visible="false">
+                <div  id="userContent" runat="server" visible="false">
                     <h2> Our Managers </h2>
                     <asp:Button ID="Button1" runat="server" Text="View Managers" OnClick="Button2_Click" CssClass="curved-button" />
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" connectionString = "Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true" 

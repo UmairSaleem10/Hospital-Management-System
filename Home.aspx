@@ -239,6 +239,13 @@
                     <h2>Our Features</h2>
                     <asp:Button CssClass="curved-button1" ID="btnPage1" runat="server" Text="Patient Record" PostBackUrl="~/Patient-Record.aspx" />
                     <asp:Button CssClass="curved-button1" ID="Button2" runat="server" Text="Appointment fixation" PostBackUrl="~/Appointment.aspx" />
+                    <asp:Button CssClass="curved-button1" ID="Button3" runat="server" Text="Financial Accounts" PostBackUrl="~/Account.aspx" />
+                    <asp:Button CssClass="curved-button1" ID="Button4" runat="server" Text="Our Employee" PostBackUrl="~/Employee.aspx" />
+                    <asp:Button CssClass="curved-button1" ID="Button5" runat="server" Text="Hospital Managers" PostBackUrl="~/Manager.aspx" />
+                    <asp:Button CssClass="curved-button1" ID="Button6" runat="server" Text="Worker Record" PostBackUrl="~/Worker.aspx" />
+                    <asp:Button CssClass="curved-button1" ID="Button7" runat="server" Text="Medicine Details" PostBackUrl="~/Medicines.aspx" />
+                    <asp:Button CssClass="curved-button1" ID="Button8" runat="server" Text="Patient Feedback" PostBackUrl="~/Feedback.aspx" />
+                    <asp:Button CssClass="curved-button1" ID="Button9" runat="server" Text="Pharmacy Details" PostBackUrl="~/Pharmacy.aspx" />
                 </div>
                 </div>
         </body>
