@@ -16,18 +16,20 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
 <body>
     <style>
         /* Add some margin to the brand text */
         .brand-text {
-               margin-left: 20px; 
+            margin-left: 20px;
         }
+
         .brand-text1 {
-               margin-left: 250px; 
+            margin-left: 250px;
         }
+
         body {
             margin: 0;
             padding: 0;
@@ -47,128 +49,142 @@
             align-items: center;
             padding: 10px 10px; /* Adjust padding as needed */
         }
+
         .footer-container {
             position: sticky;
             width: 100%;
-            bottom:0;
-            margin-top:7px;
+            bottom: 0;
+            margin-top: 7px;
             background-color: #215d8c; /* Light blue color */
-            padding: 1px; 
+            padding: 1px;
             text-align: center;
             transition: bottom 0.3s;
         }
 
         .footerlinks {
-            color: #fff; 
+            color: #fff;
             text-decoration: none;
         }
-          .department-menu {
-        background-color: #fff; 
-        padding: 10px; 
-        border-radius: 5px; 
-        color: #000; 
-    }
 
-    .department-menu ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: none;
-    }
+        .department-menu {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            color: #000;
+        }
 
-    .department-menu li {
-        margin-right: 15px;
-        display: inline-block;
-    }
+            .department-menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: none;
+            }
 
-    .department-menu a {
-        color: #000; /* Set the text color to black */
-        text-decoration: none; /* Remove underlines from links */
-        font-weight: bold; /* Make the text bold */
-        font-size: 16px; /* Set the font size */
-    }
+            .department-menu li {
+                margin-right: 15px;
+                display: inline-block;
+            }
+
+            .department-menu a {
+                color: #000; /* Set the text color to black */
+                text-decoration: none; /* Remove underlines from links */
+                font-weight: bold; /* Make the text bold */
+                font-size: 16px; /* Set the font size */
+            }
     </style>
 
 
     <form id="form1" runat="server">
         <div class="header-container">
             <header>
-           <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">
-        <img src="images/Medical Care.png" width="120" height="50" class="brand-text"/>
-        <span class="brand-text">Hospital Management</span>
-    </a>
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="#">
+                        <img src="images/Medical Care.png" width="120" height="50" class="brand-text" />
+                        <span class="brand-text">Hospital Management</span>
+                    </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <span class="brand-text1"></span>
-        
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link"  href="Home.aspx"> <h6>Home</h6> <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <span class="brand-text1"></span>
 
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link"  href="AboutUs.aspx"> <h6>About Us</h6> <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="Home.aspx">
+                                    <h6>Home</h6>
+                                    <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
 
-        <ul class="navbar-nav ml-auto">
-    <li class="nav-item active">
-        <asp:Menu ID="menuDepartments" runat="server" CssClass="nav-link" Orientation="Horizontal" StaticSubMenuIndent="10px">
-            <Items>
-                <asp:MenuItem Text="Departments">
-                    <asp:MenuItem Text="Cardiology" NavigateUrl="~/CardiologyDepartment.aspx" />
-                    <asp:MenuItem Text="Eye Care" NavigateUrl="~/EyeDepartment.aspx" />
-                    <asp:MenuItem Text="Neurology" NavigateUrl="~/NeurologyDepartment.aspx" />
-                    <asp:MenuItem Text="Surgery Department" NavigateUrl="~/SurgeryDepartment.aspx" />
-                    <asp:MenuItem Text="Physiotherapy" NavigateUrl="~/Physiotherapy" />
-                    <asp:MenuItem Text="Radiology" NavigateUrl="~/RadiologyDepartment.aspx" />
-                </asp:MenuItem>
-            </Items>
-        </asp:Menu>
-    </li>
-</ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="AboutUs.aspx">
+                                    <h6>About Us</h6>
+                                    <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
 
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link"  href="Doctor.aspx"> <h6>Doctor</h6> <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <asp:Menu ID="menuDepartments" runat="server" CssClass="nav-link" Orientation="Horizontal" StaticSubMenuIndent="10px">
+                                    <Items>
+                                        <asp:MenuItem Text="Departments">
+                                            <asp:MenuItem Text="Cardiology" NavigateUrl="~/CardiologyDepartment.aspx" />
+                                            <asp:MenuItem Text="Eye Care" NavigateUrl="~/EyeDepartment.aspx" />
+                                            <asp:MenuItem Text="Neurology" NavigateUrl="~/NeurologyDepartment.aspx" />
+                                            <asp:MenuItem Text="Surgery Department" NavigateUrl="~/SurgeryDepartment.aspx" />
+                                            <asp:MenuItem Text="Physiotherapy" NavigateUrl="~/Physiotherapy" />
+                                            <asp:MenuItem Text="Radiology" NavigateUrl="~/RadiologyDepartment.aspx" />
+                                        </asp:MenuItem>
+                                    </Items>
+                                </asp:Menu>
+                            </li>
+                        </ul>
 
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link"  href="ContactUs.aspx"> <h6>Contact Us</h6> <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="Doctor.aspx">
+                                    <h6>Doctor</h6>
+                                    <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
 
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link"  href="SignUp.aspx"> <h6>SignUp</h6> <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="ContactUs.aspx">
+                                    <h6>Contact Us</h6>
+                                    <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
 
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link"  href="SignIn.aspx"> <h6>SignIn</h6> <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="SignUp.aspx">
+                                    <h6>SignUp</h6>
+                                    <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
 
-    </div>
-</nav>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="SignIn.aspx">
+                                    <h6>SignIn</h6>
+                                    <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </nav>
 
 
-                </header>
+            </header>
         </div>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-    </asp:ContentPlaceHolder>
-            </div>
+            </asp:ContentPlaceHolder>
+        </div>
         <footer>
             <div class="footer-container">
                 <p>&copy; All rights reserved. <a class="footerlinks" href="Home.aspx" target="_blank">Health Care Hospital</a></p>

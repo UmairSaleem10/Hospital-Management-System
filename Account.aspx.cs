@@ -33,6 +33,8 @@ namespace SE_Project
                 {
                     con.Open();
                 }
+                // Log the insert operation to the Audit table
+                LogAudit("Account", TextBox0.Text.Trim(), "Insert");
                 SqlCommand cmd = new SqlCommand("INSERT INTO account (ID, Account_Name, Account_No, Bank_Name, Created_AT, Updated_AT) VALUES (@ID, @Account_Name, @Account_No, @Bank_Name, GETDATE(), GETDATE())", con);
                 cmd.Parameters.AddWithValue("@ID", TextBox0.Text.Trim());
                 cmd.Parameters.AddWithValue("@Account_Name", TextBox1.Text.Trim());
@@ -116,6 +118,7 @@ namespace SE_Project
                         Response.Write("<script>alert('Doctor deleted successfully!');</script>");
                         // Refresh the GridView after deletion
                         BindGridView();
+                        LogAudit("Account", id, "Delete");
                     }
                 }
             }
@@ -147,6 +150,29 @@ namespace SE_Project
             catch (Exception ex)
             {
                 Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
+            }
+        }
+        private void LogAudit(string tableName, string recordID, string action)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(strcon))
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Audit_account (TableName, RecordID, Action, Timestamp) VALUES (@TableName, @RecordID, @Action, GETDATE())", con))
+                    {
+                        cmd.Parameters.AddWithValue("@TableName", tableName);
+                        cmd.Parameters.AddWithValue("@RecordID", recordID);
+                        cmd.Parameters.AddWithValue("@Action", action);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                Response.Write("<script>alert('Error in LogAudit: " + ex.Message + "');</script>");
             }
         }
     }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Diagnostics;
 
 namespace SE_Project
 {
@@ -40,6 +41,8 @@ namespace SE_Project
                 {
                     con.Open();
                 }
+                // Log the insert operation to the Audit table
+                LogAudit("Doctor", TextBox0.Text.Trim(), "Insert");
                 SqlCommand cmd = new SqlCommand("INSERT INTO Doctor (DoctorID, Name, Speciality, Email, Address, Created_AT, Updated_AT) VALUES (@DoctorID, @Name, @Speciality, @Email, @Address, GETDATE(), GETDATE())", con);
                 cmd.Parameters.AddWithValue("@DoctorID", TextBox0.Text.Trim());
                 cmd.Parameters.AddWithValue("@Name", TextBox1.Text.Trim());
@@ -124,6 +127,7 @@ namespace SE_Project
                         Response.Write("<script>alert('Doctor deleted successfully!');</script>");
                         // Refresh the GridView after deletion
                         BindGridView();
+                        LogAudit("Doctor", doctorID, "Delete");
                     }
                 }
             }
@@ -155,6 +159,29 @@ namespace SE_Project
             catch (Exception ex)
             {
                 Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
+            }
+        }
+        private void LogAudit(string tableName, string ID, string action)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(strcon))
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Audit_doctor (TableName, DoctorID, Action, Timestamp) VALUES (@TableName, @DoctorID, @Action, GETDATE())", con))
+                    {
+                        cmd.Parameters.AddWithValue("@TableName", tableName);
+                        cmd.Parameters.AddWithValue("@DoctorID", ID);
+                        cmd.Parameters.AddWithValue("@Action", action);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                Response.Write("<script>alert('Error in LogAudit: " + ex.Message + "');</script>");
             }
         }
     }

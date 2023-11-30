@@ -54,6 +54,8 @@ namespace SE_Project
                     cmd.Parameters.AddWithValue("@Account_Name", TextBox1.Text.Trim());
                     cmd.Parameters.AddWithValue("@Account_No", TextBox2.Text.Trim());
                     cmd.Parameters.AddWithValue("@Bank_Name", TextBox3.Text.Trim());
+                    // Log the update operation to the Audit table
+                    LogAudit("Account", id, "Update");
                     con.Open();
                     cmd.ExecuteNonQuery();
                     Response.Write("<script>alert('Account edited successfully!');</script>");
@@ -70,6 +72,29 @@ namespace SE_Project
                 string id= Request.QueryString["ID"];
                 UpdateEmployee(id);
                 Response.Write("<script>alert('Employee edited successfully!');</script>");
+            }
+        }
+        private void LogAudit(string tableName, string recordID, string action)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(strcon))
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Audit_account (TableName, RecordID, Action, Timestamp) VALUES (@TableName, @RecordID, @Action, GETDATE())", con))
+                    {
+                        cmd.Parameters.AddWithValue("@TableName", tableName);
+                        cmd.Parameters.AddWithValue("@RecordID", recordID);
+                        cmd.Parameters.AddWithValue("@Action", action);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                Response.Write("<script>alert('Error in LogAudit: " + ex.Message + "');</script>");
             }
         }
     }

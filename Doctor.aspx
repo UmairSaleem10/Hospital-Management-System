@@ -5,129 +5,134 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!DOCTYPE html>
     <html>
-        <body>
-            <style>
-                image-adjust {
-                    display: block;
-                    max-width: 100%;
-                    margin-bottom: 10px;
-                }
-                body {
-                    margin: 0;
-                    padding: 0;
-                    background: url('images/theme1.jpg') no-repeat center center fixed;
-                    background-size: cover;
-                }
+    <body>
+        <style>
+            image-adjust {
+                display: block;
+                max-width: 100%;
+                margin-bottom: 10px;
+            }
 
-                .background-theme {
-                    padding: 20px; /* Adjust the padding */
-                }
-                .above-image {
-                    display: block;
-                    max-width: 100%;
-                    margin-bottom: 40px; /* Space b/w image and container */
-                }
+            body {
+                margin: 0;
+                padding: 0;
+                background: url('images/theme1.jpg') no-repeat center center fixed;
+                background-size: cover;
+            }
 
-                    .doctor-container h2 {
-                        text-align: center;
-                        color: #215d8c; 
-                    }
+            .background-theme {
+                padding: 20px; /* Adjust the padding */
+            }
 
-                    .doctor-container p {
-                        line-height: 1.5; 
-                        text-align: left;
-                        color: #030b17; 
-                    }
+            .above-image {
+                display: block;
+                max-width: 100%;
+                margin-bottom: 40px; /* Space b/w image and container */
+            }
 
-                .curved-button {
-                    padding: 5px 25px;
-                    background-color: #215d8c; /* Button background color */
-                    color: #fff; 
-                    border: none;
-                    border-radius: 20px; 
-                    text-decoration: none;
-                    text-align: center;
-                    font-size: 20px;
-                }
+            .doctor-container h2 {
+                text-align: center;
+                color: #215d8c;
+            }
+
+            .doctor-container p {
+                line-height: 1.5;
+                text-align: left;
+                color: #030b17;
+            }
+
+            .curved-button {
+                padding: 5px 25px;
+                background-color: #215d8c; /* Button background color */
+                color: #fff;
+                border: none;
+                border-radius: 20px;
+                text-decoration: none;
+                text-align: center;
+                font-size: 20px;
+            }
+
                 .curved-button:hover {
-                        background-color: #043965; /* Color change on hover */
+                    background-color: #043965; /* Color change on hover */
                 }
 
-                .gridView {
-                    border-collapse: collapse;
-                    width: 100%;
-                    margin-top:20px;
+            .gridView {
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+                .gridView:start {
+                    border: 1px solid #ddd;
+                    padding: 10px;
+                    text-align: left;
                 }
 
-                    .gridView:start{
-                        border: 1px solid #ddd;
-                        padding: 10px;
-                        text-align: left;
-                    }
+                .gridView:active {
+                    background-color: #f2f2f2;
+                }
 
-                    .gridView:active{
-                        background-color: #f2f2f2;
-                    }
+                .gridView:after {
+                    border-color: #ddd;
+                    border-style: solid;
+                    border-width: 1px 1px 1px 0; /* Borders on all sides except right */
+                    padding: 10px;
+                }
 
-                    .gridView:after{
-                        border-color: #ddd;
-                        border-style: solid;
-                        border-width: 1px 1px 1px 0; /* Borders on all sides except right */
-                        padding: 10px;
-                    }
+                .gridView:end {
+                    border-width: 1px; /* Add right border for the last column */
+                }
 
-                        .gridView:end{
-                            border-width: 1px; /* Add right border for the last column */
-                        }
+            .input-line {
+                border: solid;
+                border-bottom: 1px solid #000;
+                width: 100%;
+                margin-bottom: 20px;
+                padding: 5px;
+                color: #000000;
+                Background-color: #00000000
+            }
 
-                    .input-line {
-                        border: none;
-                        border-bottom: 1px solid #000;
-                        width: 100%;
-                        margin-bottom: 20px;
-                        padding: 5px;
-                        color:#000000;
-                        Background-color:#00000000
-                    }
+                .input-line:focus {
+                    outline: auto;
+                }
 
-                        .input-line:focus {
-                            outline: auto;
-                        }
-                    .doctor-container {
-                        width:100%;
-                        margin: 0;
-                        margin-top:60px;
-                        padding: 50px; /* Adjust the padding as needed */
-                        background-color: #ffffff; /* Background color */
-                        border: 1px solid #ddd;
-                        margin-bottom:20px;/* Border style */
-                        border:none;
-                        color:#000000;
-                        margin: auto;
-                    }
-                    .container{
-                        width:50%;
-                        margin: 100px;
-                        margin-bottom: 50px;
-                        margin-top: 150px;
-                        padding: 50px; /* Adjust the padding as needed */
-                        background-color: #ffffff; /* Background color */
-                        border: 1px solid #ddd;
-                        border:none;
-                        color:#000000;
-                        margin: auto;
-                    }
-                    .form{
-                        margin-top: 50px;
-                    }
+            .doctor-container {
+                width: 100%;
+                margin: 0;
+                margin-top: 60px;
+                padding: 50px; /* Adjust the padding as needed */
+                background-color: #ffffff; /* Background color */
+                border: 1px solid #ddd;
+                margin-bottom: 20px; /* Border style */
+                border: none;
+                color: #000000;
+                margin: auto;
+            }
 
-            </style>
-            <div class="background-theme">
-        <img src="images/Doctors-pro.png" width="100%" height="540" class="image-adjust above-image"> 
-                <div class="doctor-container" id="userContent" runat="server" visible="false">
-        <h2>Our Doctors</h2>  
-        <p>
-            Welcome to our Health Care Hospital, where a team of dedicated and highly skilled doctors is committed 
+            .container {
+                width: 50%;
+                margin: 100px;
+                margin-bottom: 50px;
+                margin-top: 150px;
+                padding: 50px; /* Adjust the padding as needed */
+                background-color: #ffffff; /* Background color */
+                border: 1px solid #ddd;
+                border: none;
+                color: #000000;
+                margin: auto;
+            }
+
+            .form {
+                margin-top: 50px;
+            }
+        </style>
+        <div class="background-theme">
+            <img src="images/Doctors-pro.png" width="100%" height="540" class="image-adjust above-image">
+            <div class="doctor-container" id="userContent" runat="server" visible="false">
+                <h2>Our Doctors</h2>
+                <p>
+                    Welcome to our Health Care Hospital, where a team of dedicated and highly skilled doctors is committed 
             to providing exceptional healthcare services. Our doctors bring a wealth of experience and expertise to 
             the medical field, ensuring that patients receive the highest standard of care. From primary care 
             physicians to specialists in various fields such as cardiology, orthopedics, and pediatrics, our diverse 
@@ -142,45 +147,45 @@
                 relationships, and our compassionate healthcare professionals are dedicated to ensuring that each 
                 patient feels heard, supported, and well-informed throughout their medical journey.
             </p>
-            <p>
-                At our hospital, we believe in the power of collaboration and continuous learning. Our doctors actively
+                    <p>
+                        At our hospital, we believe in the power of collaboration and continuous learning. Our doctors actively
                 engage in ongoing medical education and research to stay informed about the latest medical 
                 breakthroughs. Whether you are seeking routine check-ups or specialized treatments, our team of doctors
                 is here to provide the highest quality of care. We take pride in building a healthcare environment that
                 promotes trust, transparency, and excellence. Explore the profiles of our esteemed doctors, and entrust
                 your health to a team that is passionate about making a positive impact on the lives of our patients.
-            </p>
-        </p>
-                    <asp:Button ID="Button1" runat="server" Text="View Doctors" OnClick="Button1_Click" CssClass="curved-button" />
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" connectionString = "Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true" 
-                    SelectCommand ="SELECT DoctorID, Name, Speciality, Email, Address, Created_AT, Updated_AT FROM Doctor"></asp:SqlDataSource>
-                    <asp:GridView class="gridView" ID ="gridView" runat="server" Visible="false" AutoGenerateColumns="False" OnRowCommand="gridView_RowCommand" OnRowDeleting="gridView_RowDeleting" DataKeyNames="DoctorID">
-                        <Columns>
-                            <asp:BoundField DataField="DoctorID" HeaderText="DoctorID" SortExpression="DoctorID" />
+                    </p>
+                </p>
+                <asp:Button ID="Button1" runat="server" Text="View Doctors" OnClick="Button1_Click" CssClass="curved-button" />
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true"
+                    SelectCommand="SELECT DoctorID, Name, Speciality, Email, Address, Created_AT, Updated_AT FROM Doctor"></asp:SqlDataSource>
+                <asp:GridView class="gridView" ID="gridView" runat="server" Visible="false" AutoGenerateColumns="False" OnRowCommand="gridView_RowCommand" OnRowDeleting="gridView_RowDeleting" DataKeyNames="DoctorID">
+                    <Columns>
+                        <asp:BoundField DataField="DoctorID" HeaderText="DoctorID" SortExpression="DoctorID" />
                         <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                         <asp:BoundField DataField="Speciality" HeaderText="Speciality" SortExpression="Speciality" />
                         <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                         <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
                         <asp:BoundField DataField="Created_AT" HeaderText="Created_AT" SortExpression="Created_AT" />
                         <asp:BoundField DataField="Updated_AT" HeaderText="Updated_AT" SortExpression="Updated_AT" />
-                        <asp:ButtonField ButtonType="Button" Text="Edit" CommandName="Edit" HeaderText="Edit" visible="false"/>
-                        <asp:ButtonField ButtonType="Button" Text="Delete" CommandName="Delete" HeaderText="Delete" Visible="false"/>
+                        <asp:ButtonField ButtonType="Button" Text="Edit" CommandName="Edit" HeaderText="Edit" Visible="false" />
+                        <asp:ButtonField ButtonType="Button" Text="Delete" CommandName="Delete" HeaderText="Delete" Visible="false" />
                     </Columns>
-                    </asp:GridView>
-    </div>
-                
-                <div class="container" id="adminContent" runat="server" visible="false">
-                    <h2>Add Doctor</h2>
+                </asp:GridView>
+            </div>
+
+            <div class="container" id="adminContent" runat="server" visible="false">
+                <h2>Add Doctor</h2>
                 <formview class="form">
                     <asp:TextBox CssClass="input-line" ID="TextBox0" runat="server" placeholder="ID"></asp:TextBox>
                     <asp:TextBox CssClass="input-line" ID="TextBox1" runat="server" placeholder="Name"></asp:TextBox>
                     <asp:TextBox CssClass="input-line" ID="TextBox2" runat="server" placeholder="Speciality"></asp:TextBox>
-                    <asp:TextBox CssClass="input-line" ID="TextBox3" runat="server" placeholder="Email" TextMode= "Email" ></asp:TextBox>
+                    <asp:TextBox CssClass="input-line" ID="TextBox3" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>
                     <asp:TextBox CssClass="input-line" ID="TextBox4" runat="server" placeholder="Address"></asp:TextBox>
                     <asp:Button ID="Button2" runat="server" Text="Save" OnClick="Button2_Click" CssClass="curved-button" />
                 </formview>
-                        </div>
-                </div>
-        </body>
+            </div>
+        </div>
+    </body>
     </html>
 </asp:Content>

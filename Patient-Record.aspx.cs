@@ -14,11 +14,16 @@ namespace SE_Project
         string strcon = "Data Source = DESKTOP-PQQJSLN\\MSSQLSERVER08; Database = SE_Project; Integrated Security = true";
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                LoadDoctors();
+            }
             string userRole = Session["UserRole"] as string;
             if (userRole != null)
             {
                 if (userRole.Equals("Admin", StringComparison.OrdinalIgnoreCase))
                 {
+                    adminContent.Visible = true;
                     gridView.Columns[8].Visible = true;
                     gridView.Columns[9].Visible = true;
                 }
@@ -46,6 +51,58 @@ namespace SE_Project
             {
                 Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
 
+            }
+        }
+        private void LoadDoctors()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(strcon))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SELECT Name FROM Doctor", con))
+                    {
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            ddlDoctors.DataSource = reader;
+                            ddlDoctors.DataTextField = "Name";
+                            ddlDoctors.DataBind();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+            }
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string doctorName = ddlDoctors.SelectedItem.Text;
+                string gender = ddlGender.SelectedItem.Text;
+                using (SqlConnection con = new SqlConnection(strcon))
+                {
+                    // Log the insert operation to the Audit table
+                    LogAudit("Patient", TextBox0.Text.Trim(), "Insert");
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Patient (PatientID, Name, Disease, D_Name, Address, Gender, Created_At,Updated_At) VALUES (@PatientID, @Name, @Disease, @D_Name, @Address, @Gender, GETDATE(), GETDATE())", con))
+                    {
+                        cmd.Parameters.AddWithValue("@PatientID", TextBox0.Text);
+                        cmd.Parameters.AddWithValue("@Name", TextBox1.Text);
+                        cmd.Parameters.AddWithValue("@Disease", TextBox2.Text);
+                        cmd.Parameters.AddWithValue("@D_Name", doctorName);
+                        cmd.Parameters.AddWithValue("@Address", TextBox3.Text);
+                        cmd.Parameters.AddWithValue("@Gender", gender);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                Response.Write("<script>alert('Patients saved successfully!');</script>");
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
             }
         }
         protected void gridView_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -92,6 +149,7 @@ namespace SE_Project
                         Response.Write("<script>alert('Patient deleted successfully!');</script>");
                         // Refresh the GridView after deletion
                         BindGridView();
+                        LogAudit("Patient", patientID, "Delete");
                     }
                 }
             }
@@ -123,6 +181,29 @@ namespace SE_Project
             catch (Exception ex)
             {
                 Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
+            }
+        }
+        private void LogAudit(string tableName, string recordID, string action)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(strcon))
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Audit_patient (TableName, RecordID, Action, Timestamp) VALUES (@TableName, @RecordID, @Action, GETDATE())", con))
+                    {
+                        cmd.Parameters.AddWithValue("@TableName", tableName);
+                        cmd.Parameters.AddWithValue("@RecordID", recordID);
+                        cmd.Parameters.AddWithValue("@Action", action);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                Response.Write("<script>alert('Error in LogAudit: " + ex.Message + "');</script>");
             }
         }
     }

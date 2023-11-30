@@ -94,6 +94,8 @@ namespace SE_Project
                     cmd.Parameters.AddWithValue("@D_Name", doctorName);
                     cmd.Parameters.AddWithValue("@Address", TextBox3.Text.Trim());
                     cmd.Parameters.AddWithValue("@Gender", gender);
+                    // Log the update operation to the Audit table
+                    LogAudit("Patient", patientID, "Update");
                     con.Open();
                     cmd.ExecuteNonQuery();
                 }
@@ -108,6 +110,29 @@ namespace SE_Project
             {
                 string patientID = Request.QueryString["PatientID"];
                 UpdatePatient(patientID);
+            }
+        }
+        private void LogAudit(string tableName, string recordID, string action)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(strcon))
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Audit_patient (TableName, RecordID, Action, Timestamp) VALUES (@TableName, @RecordID, @Action, GETDATE())", con))
+                    {
+                        cmd.Parameters.AddWithValue("@TableName", tableName);
+                        cmd.Parameters.AddWithValue("@RecordID", recordID);
+                        cmd.Parameters.AddWithValue("@Action", action);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                Response.Write("<script>alert('Error in LogAudit: " + ex.Message + "');</script>");
             }
         }
     }

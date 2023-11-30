@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -57,7 +58,8 @@ namespace SE_Project
                     cmd.Parameters.AddWithValue("@Speciality", TextBox2.Text.Trim());
                     cmd.Parameters.AddWithValue("@Email", TextBox3.Text.Trim());
                     cmd.Parameters.AddWithValue("@Address", TextBox4.Text.Trim());
-
+                    // Log the update operation to the Audit table
+                    LogAudit("Doctor", doctorID, "Update");
                     con.Open();
                     cmd.ExecuteNonQuery();
                 }
@@ -73,6 +75,29 @@ namespace SE_Project
             {
                 string doctorID = Request.QueryString["DoctorID"];
                 UpdateDoctor(doctorID);
+            }
+        }
+        private void LogAudit(string tableName, string ID, string action)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(strcon))
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Audit_doctor (TableName, DoctorID, Action, Timestamp) VALUES (@TableName, @DoctorID, @Action, GETDATE())", con))
+                    {
+                        cmd.Parameters.AddWithValue("@TableName", tableName);
+                        cmd.Parameters.AddWithValue("@DoctorID", ID);
+                        cmd.Parameters.AddWithValue("@Action", action);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                Response.Write("<script>alert('Error in LogAudit: " + ex.Message + "');</script>");
             }
         }
     }
